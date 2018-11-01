@@ -1,0 +1,25 @@
+<jaxws:bindings node="wsdl:definitions/wsdl:types/xsd:schema"
+                xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+                xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+                xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                wsdlLocation="FNCEWS40.wsdl">
+
+
+    <jaxb:globalBindings>
+        <jaxb:javaType
+            name="java.util.Date"
+            xmlType="xsd:dateTime"
+            parseMethod="lu.mtn.ibm.filenet.client.ws.converter.WSAdapter.convertToDate"
+            printMethod="lu.mtn.ibm.filenet.client.ws.converter.WSAdapter.convertFromDateTime"
+        />
+        <jaxb:javaType
+            name="java.util.Date"
+            xmlType="xsd:date"
+            parseMethod="lu.mtn.ibm.filenet.client.ws.converter.WSAdapter.convertToDate"
+            printMethod="lu.mtn.ibm.filenet.client.ws.converter.WSAdapter.convertFromDate"
+        />
+    </jaxb:globalBindings>
+
+
+</jaxws:bindings>

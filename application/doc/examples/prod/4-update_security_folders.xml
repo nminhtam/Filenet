@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operations>
+
+    <folderSecurityMapper>
+        <mapping name="wsq_Admin_Grp@portima.org" substitute="wsq_Admin_Grp@portima.org"/>
+        <mapping name="dmq_Store_Grp@portima.org" substitute="dmq_Store_Grp@portima.org"/>
+        <mapping name="P8q_Admin@portima.org" substitute="P8q_Admin@portima.org"/>
+        <mapping name="fndmqfe2be@portima.org" substitute="fndmqfe2be@portima.org"/>
+    </folderSecurityMapper>
+
+    <updateFolderSecurity path="/Configuration">
+        <permissions>
+            <permission accessMask="999415" accessType="1" depth="0" type="2000" user="P8q_Admin@portima.org"/>
+            <permission accessMask="999415" accessType="1" depth="0" type="2001" user="wsq_Admin_Grp@portima.org"/>
+            <permission accessMask="131073" accessType="1" depth="0" type="2001" user="dmq_Store_Grp@portima.org"/>
+        </permissions>
+    </updateFolderSecurity>
+    <updateFolderSecurity path="/Configuration/Workflows">
+        <permissions>
+            <permission accessMask="999415" accessType="1" depth="0" type="2000" user="P8q_Admin@portima.org"/>
+            <permission accessMask="999415" accessType="1" depth="0" type="2001" user="wsq_Admin_Grp@portima.org"/>
+            <permission accessMask="131073" accessType="1" depth="0" type="2001" user="dmq_Store_Grp@portima.org"/>
+        </permissions>
+    </updateFolderSecurity>
+    <updateFolderSecurity path="/Configuration/Workflows/DMPoc">
+        <permissions>
+            <permission accessMask="999415" accessType="1" depth="0" type="2000" user="P8q_Admin@portima.org"/>
+            <permission accessMask="999415" accessType="1" depth="0" type="2001" user="wsq_Admin_Grp@portima.org"/>
+            <permission accessMask="131073" accessType="1" depth="0" type="2001" user="dmq_Store_Grp@portima.org"/>
+        </permissions>
+    </updateFolderSecurity>
+    <updateFolderSecurity path="/Configuration/Workflows/DMPoc/Mails">
+        <permissions>
+            <permission accessMask="999415" accessType="1" depth="0" type="2000" user="P8q_Admin@portima.org"/>
+            <permission accessMask="999415" accessType="1" depth="0" type="2001" user="wsq_Admin_Grp@portima.org"/>
+            <permission accessMask="131073" accessType="1" depth="0" type="2001" user="dmq_Store_Grp@portima.org"/>
+        </permissions>
+    </updateFolderSecurity>
+    <updateFolderSecurity path="/Affiliation">
+        <permissions>
+            <permission accessMask="999415" accessType="1" depth="0" type="2001" user="wsq_Admin_Grp@portima.org"/>
+            <permission accessMask="135159" accessType="1" depth="-1" type="2001" user="dmq_Store_Grp@portima.org"/>
+            <permission accessMask="999415" accessType="1" depth="0" type="2000" user="P8q_Admin@portima.org"/>
+            <permission accessMask="999415" accessType="1" depth="-1" type="2000" user="fndmqfe2be@portima.org"/>
+        </permissions>
+    </updateFolderSecurity>
+    <updateFolderSecurity path="/LRA">
+        <permissions>
+            <permission accessMask="135159" accessType="1" depth="-1" type="2001" user="dmq_Store_Grp@portima.org"/>
+            <permission accessMask="999415" accessType="1" depth="0" type="2000" user="P8q_Admin@portima.org"/>
+            <permission accessMask="999415" accessType="1" depth="-1" type="2000" user="fndmqfe2be@portima.org"/>
+            <permission accessMask="999415" accessType="1" depth="0" type="2001" user="wsq_Admin_Grp@portima.org"/>
+        </permissions>
+    </updateFolderSecurity>
+    <updateFolderSecurity path="/Procuration">
+        <permissions>
+            <permission accessMask="135159" accessType="1" depth="-1" type="2001" user="dmq_Store_Grp@portima.org"/>
+            <permission accessMask="999415" accessType="1" depth="0" type="2000" user="P8q_Admin@portima.org"/>
+            <permission accessMask="999415" accessType="1" depth="0" type="2000" user="fndmqfe2be@portima.org"/>
+            <permission accessMask="999415" accessType="1" depth="0" type="2001" user="wsq_Admin_Grp@portima.org"/>
+        </permissions>
+    </updateFolderSecurity>
+
+</operations>

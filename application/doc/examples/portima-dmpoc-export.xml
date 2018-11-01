@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operations>
+
+<!--
+    Export Classes
+ -->
+    <exportClass name="PortimaDocument" operation="create" exportSubClasses="true" writer="fileWriter" />
+    <exportClass name="LRA" operation="create" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="LRARevocation" operation="create" exportSubClasses="false" writer="fileWriter" />
+
+    <exportClass name="IPad_ASWeb" operation="create" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_Brio4You" operation="create" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_BrioPlus" operation="create" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_LRA" operation="create" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_Port_e_email" operation="create" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_Portigate" operation="create" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_LRARevocation" operation="create" exportSubClasses="false" writer="fileWriter" />
+
+    <exportClassSecurity name="PortimaDocument" exportSubClasses="true" writer="fileWriter" />
+    <exportClassSecurity name="LRA" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="LRARevocation" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_ASWeb" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_Brio4You" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_BrioPlus" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_LRA" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_Port_e_email" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_Portigate" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_LRARevocation" exportSubClasses="false" writer="fileWriter" />
+
+
+<!--
+    Create Folder
+ -->
+    <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <createFolder path="/Configuration/Workflows/DMPoc/Mails" />
+            <createFolder path="/Affiliation" />
+            <createFolder path="/LRA" />
+            <createFolder path="/Procuration" />
+        ]]>
+    </writeOuputXML>
+
+
+<!--
+    Export Workflows Contents
+ -->
+    <executeOperationOnQueryResult operation="exportDocument" query="SELECT d.[Id], d.[DocumentTitle] FROM [Document] d WHERE d.[IsCurrentVersion] = true AND d.[This] INSUBFOLDER '/Configuration/Workflows/DMPoc' ORDER BY d.[DocumentTitle]">
+        <zipContent>true</zipContent>
+        <addFolderPath>true</addFolderPath>
+        <operation>create</operation>
+        <writer>fileWriter</writer>
+    </executeOperationOnQueryResult>
+
+
+<!--
+    Export the Process Engine Configuration
+ -->
+    <exportQueueConfig name="PortimaValidationQueue" operation="create" writer="fileWriter" />
+    <exportQueueConfig name="PortimaSignatureQueue" operation="create" writer="fileWriter" />
+    <exportQueueConfig name="PortimaProcurationQueue" operation="create" writer="fileWriter" />
+    <exportQueueConfig name="PortimaFunctions" operation="create" writer="fileWriter" exportCodeModule="true" />
+    <exportRosterConfig name="PortimaWorkflowPocRoster" operation="create" writer="fileWriter" />
+    <exportEventLogConfig name="PortimaWorkflowEventLog" operation="create" writer="fileWriter" />
+
+
+<!--
+    Export Subscriptions, Event Handler and Code Module associated
+ -->
+    <executeOperationOnQueryResult operation="exportClassSubscription" query="SELECT c.[Id] FROM [ClassSubscription] c">
+        <exportEventAction>true</exportEventAction>
+        <exportCodeModule>true</exportCodeModule>
+        <exportWorkflowDefinition>false</exportWorkflowDefinition>
+        <operation>create</operation>
+        <writer>fileWriter</writer>
+    </executeOperationOnQueryResult>
+
+    <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <transferWorkflow id="#{DMPocSendMailWorkflow}" />
+            <transferWorkflow id="#{DMQRCodeAccess}" />
+        ]]>
+    </writeOuputXML>
+
+
+</operations>

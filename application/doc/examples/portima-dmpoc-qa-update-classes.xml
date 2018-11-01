@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operations>
+
+    <exportClass name="PortimaDocument" operation="update" exportSubClasses="true" writer="fileWriter" />
+
+    <exportClass name="LRA" operation="update" exportSubClasses="false" writer="fileWriter" />
+
+    <exportClass name="IPad_ASWeb" operation="update" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_Brio4You" operation="update" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_BrioPlus" operation="update" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_LRA" operation="update" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_Port_e_email" operation="update" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_Portigate" operation="update" exportSubClasses="false" writer="fileWriter" />
+
+</operations>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operations>
+
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [UBSTicketAS]">
+        <class>Document</class>
+    </executeOperationOnQueryResult>
+    
+    
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [ClassDefinition] WHERE [SymbolicName] = 'UBSTicketAS'">
+        <class>ClassDefinition</class>
+    </executeOperationOnQueryResult>
+    
+    
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASTicketID'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASLotusNotesID'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASType'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASFund'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASTheme'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASPriority'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASSubject'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASProblemContributorName'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASProblemContributorMail'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASResponsibleName'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASResponsibleMail'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASLastResponsibleName'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASState'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASFrom'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASCloseDate'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASCreateDate'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASDeliveredDate'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASPostedDate'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [PropertyTemplate] WHERE [SymbolicName] = 'ASDeadline'">
+        <class>PropertyTemplate</class>
+    </executeOperationOnQueryResult>
+    
+        
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [ChoiceList] WHERE [DisplayName] = 'ASStateCL'">
+        <class>ChoiceList</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [ChoiceList] WHERE [DisplayName] = 'ASPriorityCL'">
+        <class>ChoiceList</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [ChoiceList] WHERE [DisplayName] = 'ASTypeCL'">
+        <class>ChoiceList</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [ChoiceList] WHERE [DisplayName] = 'ASResponsibleNameCL'">
+        <class>ChoiceList</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [ChoiceList] WHERE [DisplayName] = 'ASResponsibleMailCL'">
+        <class>ChoiceList</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [ChoiceList] WHERE [DisplayName] = 'ASFundCL'">
+        <class>ChoiceList</class>
+    </executeOperationOnQueryResult>
+    <executeOperationOnQueryResult operation="delete" query="SELECT [Id] FROM [ChoiceList] WHERE [DisplayName] = 'ASThemeCL'">
+        <class>ChoiceList</class>
+    </executeOperationOnQueryResult>
+
+</operations>

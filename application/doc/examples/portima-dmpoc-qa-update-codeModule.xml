@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operations>
+
+     <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <storeIdReference idRef="DMPocContract Workflow CodeModule" query="SELECT c.[Id] FROM [CodeModule] c WHERE c.[DocumentTitle] = 'DMPocContract Workflow CodeModule' AND c.[IsCurrentVersion] = true" />
+         ]]>
+    </writeOuputXML>
+
+    <exportQueueConfig name="PortimaFunctions" operation="update" writer="fileWriter" exportCodeModule="true" />
+
+</operations>

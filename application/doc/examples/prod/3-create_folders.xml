@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operations>
+
+    <createFolder path="/Configuration/Workflows/DMPoc/Mails" />
+    <createFolder path="/Affiliation" />
+    <createFolder path="/LRA" />
+    <createFolder path="/Procuration" />
+
+</operations>

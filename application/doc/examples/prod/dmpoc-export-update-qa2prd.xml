@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operations>
+
+<!--
+    Export Classes
+ -->
+    <exportClass name="PortimaDocument" operation="update" exportSubClasses="true" writer="fileWriter" />
+    <exportClass name="LRA" operation="update" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="LRARevocation" operation="update" exportSubClasses="false" writer="fileWriter" />
+
+    <exportClass name="IPad_ASWeb" operation="update" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_Brio4You" operation="update" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_BrioPlus" operation="update" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_LRA" operation="update" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_Port_e_email" operation="update" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_Portigate" operation="update" exportSubClasses="false" writer="fileWriter" />
+    <exportClass name="IPad_LRARevocation" operation="update" exportSubClasses="false" writer="fileWriter" />
+
+<!--
+    Export Workflows Configuration Contents (excludes WorkflowDefinitions)
+ -->
+    <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <storeIdReferences prefix="" propertyName="DocumentTitle" query="SELECT d.[Id], d.[DocumentTitle] FROM [Document] d WHERE d.[IsCurrentVersion] = true AND d.[This] INSUBFOLDER '/Configuration/Workflows/DMPoc' AND NOT(IsOfClass(d, WorkflowDefinition))" />
+        ]]>
+    </writeOuputXML>
+    <executeOperationOnQueryResult operation="exportDocument" query="SELECT d.[Id], d.[DocumentTitle] FROM [Document] d WHERE d.[IsCurrentVersion] = true AND d.[This] INSUBFOLDER '/Configuration/Workflows/DMPoc' AND NOT(IsOfClass(d, WorkflowDefinition)) ORDER By DocumentTitle">
+        <zipContent>true</zipContent>
+        <addFolderPath>true</addFolderPath>
+        <addIdRef>false</addIdRef>
+        <addUpdateIdRef>true</addUpdateIdRef>
+        <keepVersions>false</keepVersions>
+        <operation>update</operation>
+        <writer>fileWriter</writer>
+        <content>
+            <modifiers>
+                <modifier class="be.portima.dmpoc.installation.operation.export.modifier.XPathValuesXMLExportModifier" xPath="//property[@name='To']" remove="true" />
+                <modifier class="be.portima.dmpoc.installation.operation.export.modifier.RegexDocumentContentXMLExportModifier" xPath="//*[@class='WorkflowEmail']/content">
+                    <replacement regex="ibp\.qa\.portima\.be" substitute="ibp.portima.be" />
+                    <replacement regex="qa\.broker[s|S]ign\.be" substitute="www.brokersign.be" />
+                </modifier>
+            </modifiers>
+        </content>
+    </executeOperationOnQueryResult>
+
+
+<!--
+    Update the code Module associated to the Component Queue and update the queue
+ -->
+    <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <storeIdReference idRef="DMPocContract Workflow CodeModule" query="SELECT c.[Id] FROM [CodeModule] c WHERE c.[DocumentTitle] = 'DMPocContract Workflow CodeModule' AND c.[IsCurrentVersion] = true" />
+         ]]>
+    </writeOuputXML>
+
+    <exportQueueConfig name="PortimaFunctions" operation="update" writer="fileWriter" exportCodeModule="true" />
+
+
+<!--
+    Export Subscriptions, Event Handler and Code Module associated
+ -->
+    <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <executeOperationOnQueryResult operation="delete" query="SELECT d.[Id] FROM [ClassSubscription] d">
+                <class>ClassSubscription</class>
+            </executeOperationOnQueryResult>
+            <executeOperationOnQueryResult operation="delete" query="SELECT d.[Id] FROM [EventAction] d WHERE d.[DisplayName] like '%FolderClassification%' OR d.[DisplayName] like 'IPad%'">
+                <class>EventAction</class>
+            </executeOperationOnQueryResult>
+            <executeOperationOnQueryResult operation="delete" query="SELECT d.[Id] FROM [CodeModule] d WHERE d.[DocumentTitle] = 'DMPocContract FolderClassification CodeModule'">
+                <class>CodeModule</class>
+            </executeOperationOnQueryResult>
+            <workflowDefinitionSecurityMapper>
+                <mapping name="tracker:P8q_admin" substitute="" />
+                <mapping name="user:fndmqfe2be" substitute="fndmpfe2be" />
+            </workflowDefinitionSecurityMapper>
+            <storeIdReferences prefix="" propertyName="DocumentTitle" query="SELECT d.[Id], d.[DocumentTitle] FROM [WorkflowDefinition] d WHERE d.[IsCurrentVersion] = true AND d.[This] INSUBFOLDER '/Configuration/Workflows/DMPoc'" />
+        ]]>
+    </writeOuputXML>
+
+    <!--     Export the workflow related to the mail because there is no subscription. -->
+    <executeOperationOnQueryResult operation="exportDocument" query="SELECT d.[Id], d.[DocumentTitle] FROM [WorkflowDefinition] d WHERE d.[IsCurrentVersion] = true AND d.[This] INSUBFOLDER '/Configuration/Workflows/DMPoc' ORDER BY d.[DocumentTitle]">
+        <zipContent>true</zipContent>
+        <addFolderPath>true</addFolderPath>
+        <addIdRef>true</addIdRef>
+        <addUpdateIdRef>true</addUpdateIdRef>
+        <operation>update</operation>
+        <writer>fileWriter</writer>
+    </executeOperationOnQueryResult>
+
+    <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <transferWorkflow id="#{DMPocSendMail Workflow}" />
+            <transferWorkflow id="#{DMPocQRCodeAccess Workflow}" />
+        ]]>
+    </writeOuputXML>
+
+    <executeOperationOnQueryResult operation="exportClassSubscription" query="SELECT c.[Id], c.[DisplayName] FROM [ClassSubscription] c ORDER BY c.[DisplayName]">
+        <exportEventAction>true</exportEventAction>
+        <exportCodeModule>true</exportCodeModule>
+        <exportWorkflowDefinition>false</exportWorkflowDefinition>
+        <useWorkflowDefinitionId>false</useWorkflowDefinitionId>
+        <operation>create</operation>
+        <writer>fileWriter</writer>
+    </executeOperationOnQueryResult>
+
+</operations>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+<!--     <filenetConnection url="http://192.168.239.129:9080/wsi/FNCEWS40MTOM" user="p8admin" password="filenet" objectStore="PortimaArchives" connectionPoint="PE_CP1" /> -->
+<!--     <filenetConnection url="http://192.168.25.33:9080/wsi/FNCEWS40MTOM" user="p8admin" password="filenet" objectStore="PortimaArchives" connectionPoint="CP1" /> -->
+<!--     <filenetConnection url="http://192.168.239.129:9080/wsi/FNCEWS40MTOM" user="p8admin" password="filenet" objectStore="PortimaArchives" connectionPoint="PE_CP1" /> -->
+
+    <!-- fnwfpoc01 -->
+<!--     <filenetConnection url="http://192.168.25.9:9080/wsi/FNCEWS40MTOM" user="ws_Admin" password="P0rt1m4" objectStore="OS1" connectionPoint="CP1" /> -->
+
+    <filenetConnection url="http://192.168.25.33:9080/wsi/FNCEWS40MTOM" user="p8admin" password="filenet" objectStore="PortimaArchives" connectionPoint="PE_CP1" />
+
+    <writers>
+
+        <writer name="fileWriter" class="lu.mtn.ibm.filenet.deployment.tool.writer.OperationsFileWriter">
+            <![CDATA[<configuration><filePath>output.xml</filePath></configuration>]]>
+        </writer>
+
+    </writers>
+    
+    <internationalization>
+        <bundle lang="fr" file="config/translation_fr.properties" />
+        <bundle lang="nl" file="config/translation_nl.properties" />
+        <writer>
+            <![CDATA[<configuration><filePathPrefix>output-translation</filePathPrefix></configuration>]]>
+        </writer>
+    </internationalization>
+    
+
+</configuration>

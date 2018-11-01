@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+<!--     <filenetConnection url="http://192.168.239.129:9080/wsi/FNCEWS40MTOM" user="p8admin" password="filenet" objectStore="PortimaArchives" connectionPoint="PE_CP1" /> -->
+<!--     <filenetConnection url="http://192.168.239.129:9080/wsi/FNCEWS40MTOM" user="p8admin" password="filenet" objectStore="PortimaArchives" connectionPoint="PE_CP1" /> -->
+
+    <!-- fnwfpoc01 -->
+<!--     <filenetConnection url="http://192.168.25.9:9080/wsi/FNCEWS40MTOM" user="ws_Admin" password="P0rt1m4" objectStore="OS1" connectionPoint="CP1" /> -->
+
+<!--     <filenetConnection url="http://192.168.25.33:9080/wsi/FNCEWS40MTOM" user="p8admin" password="filenet" objectStore="PortimaArchives" connectionPoint="PE_CP1" /> -->
+<!--     <filenetConnection url="http://192.168.25.35:9080/wsi/FNCEWS40MTOM" user="p8_admin" password="P0rt1m4" objectStore="OS1" connectionPoint="CP1" /> -->
+
+<!-- <filenetConnection url="http://cepemachine:9080/wsi/FNCEWS40MTOM" user="ldap_admin" password="Filenet01" objectStore="OS1" connectionPoint="CP1" /> -->
+<!-- <filenetConnection url="http://fndmdev01:9080/wsi/FNCEWS40MTOM" user="ws_admin" password="P0rt1m4" objectStore="OS1" connectionPoint="CP1" /> -->
+
+<!-- <filenetConnection url="http://fndmq01.portima.org:9080/wsi/FNCEWS40MTOM" user="fndmqfe2be" password="T4lk2m3" objectStore="dmq-filedoc" connectionPoint="CP1" /> -->
+
+<filenetConnection url="http://axadevgedce01:9080/wsi/FNCEWS40MTOM" user="p8_get_adm" password="GedWebApp$12@" objectStore="OS2" connectionPoint="PE_CP1" />
+    <writers>
+
+        <writer name="fileWriter" class="lu.mtn.ibm.filenet.deployment.tool.writer.OperationsFileWriter">
+            <![CDATA[<configuration><filePath>target/output.xml</filePath></configuration>]]>
+        </writer>
+
+    </writers>
+
+</configuration>

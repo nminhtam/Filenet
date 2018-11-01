@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operations>
+
+    <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <objectStoreSecurityMapper>
+                <mapping name="Ce_admin_grp@portima.org" substitute="dmq_Admin_Grp@portima.org"/>
+                <mapping name="Ce_user_grp@portima.org" substitute="dmq_Store_Grp@portima.org"/>
+                <mapping name="fndmpocfe2be@portima.org" substitute="fndmqfe2be@portima.org"/>
+                <mapping name="P8_admin@portima.org" substitute="P8q_Admin@portima.org"/>
+                <mapping name="Ws_admin_grp@portima.org" substitute="Wsq_Admin_grp@portima.org"/>
+            </objectStoreSecurityMapper>
+        ]]>
+    </writeOuputXML>
+
+    <exportObjectStoreSecurity writer="fileWriter" />
+
+
+    <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <classSecurityMapper>
+                <mapping name="Ce_admin_grp@portima.org" substitute="dmq_Admin_Grp@portima.org"/>
+                <mapping name="Ce_user_grp@portima.org" substitute="dmq_Store_Grp@portima.org"/>
+                <mapping name="fndmpocfe2be@portima.org" substitute="fndmqfe2be@portima.org"/>
+                <mapping name="P8_admin@portima.org" substitute="P8q_Admin@portima.org"/>
+                <mapping name="Ws_admin_grp@portima.org" substitute="Wsq_Admin_grp@portima.org"/>
+            </classSecurityMapper>
+        ]]>
+    </writeOuputXML>
+
+    <exportClassSecurity name="PortimaDocument" exportSubClasses="true" writer="fileWriter" />
+    <exportClassSecurity name="LRA" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="LRARevocation" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_ASWeb" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_Brio4You" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_BrioPlus" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_LRA" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_Port_e_email" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_Portigate" exportSubClasses="false" writer="fileWriter" />
+    <exportClassSecurity name="IPad_LRARevocation" exportSubClasses="false" writer="fileWriter" />
+
+</operations>

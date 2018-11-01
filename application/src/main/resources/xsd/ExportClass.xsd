@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="createChoiceList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="group" maxOccurs="unbounded" type="group" />
+                <xs:element name="choice" maxOccurs="unbounded" type="choice" />
+            </xs:sequence>
+            <xs:attribute name="type" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:enumeration value="6">
+                            <xs:annotation>
+                                <xs:documentation>Type of choice with Long values</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="8">
+                            <xs:annotation>
+                                <xs:documentation>Type of choice with String values</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="group">
+        <xs:sequence>
+            <xs:element name="group" maxOccurs="unbounded" type="group"/>
+            <xs:element name="choice" maxOccurs="unbounded" type="choice"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="choice">
+        <xs:attribute name="name" type="xs:string"></xs:attribute>
+        <xs:attribute name="value" type="xs:anySimpleType">
+        </xs:attribute>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operations>
+
+    <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <regexContentModifier classNamePattern="WorkflowEmail|WorkflowConfiguration">
+                <replacement regex="dev\." substitute="qa." />
+            </regexContentModifier>
+            <workflowDefinitionSecurityMapper>
+                <mapping anme="tracker:P8_admin" substitute="" />
+                <mapping name="user:fndmpocfe2be" substitute="fndmqfe2be" />
+            </workflowDefinitionSecurityMapper>
+            <storeIdReferences prefix="" propertyName="DocumentTitle" query="SELECT d.[Id], d.[DocumentTitle] FROM [Document] d WHERE d.[IsCurrentVersion] = true AND d.[This] INSUBFOLDER '/Configuration/Workflows/DMPoc' AND NOT(IsOfClass(d, WorkflowDefinition))" />
+        ]]>
+    </writeOuputXML>
+
+    <executeOperationOnQueryResult operation="exportDocument" query="SELECT d.[Id] FROM [Document] d WHERE d.[IsCurrentVersion] = true AND d.[This] INSUBFOLDER '/Configuration/Workflows/DMPoc' AND NOT(IsOfClass(d, WorkflowDefinition))">
+        <zipContent>true</zipContent>
+        <addFolderPath>true</addFolderPath>
+        <addIdRef>false</addIdRef>
+        <addUpdateIdRef>true</addUpdateIdRef>
+        <operation>update</operation>
+        <writer>fileWriter</writer>
+    </executeOperationOnQueryResult>
+
+    <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <executeOperationOnQueryResult operation="delete" query="SELECT d.[Id] FROM [ClassSubscription] d">
+                <class>ClassSubscription</class>
+            </executeOperationOnQueryResult>
+
+            <executeOperationOnQueryResult operation="delete" query="SELECT d.[Id] FROM [EventAction] d WHERE d.[DisplayName] like '%FolderClassificationEventHandler'">
+                <class>EventAction</class>
+            </executeOperationOnQueryResult>
+
+            <executeOperationOnQueryResult operation="delete" query="SELECT d.[Id] FROM [CodeModule] d WHERE d.[DocumentTitle] = 'DMPocContract FolderClassification CodeModule'">
+                <class>CodeModule</class>
+            </executeOperationOnQueryResult>
+
+            <storeIdReferences prefix="" propertyName="DocumentTitle" query="SELECT d.[Id], d.[DocumentTitle] FROM [WorkflowDefinition] d WHERE d.[IsCurrentVersion] = true AND d.[This] INSUBFOLDER '/Configuration/Workflows/DMPoc'" />
+        ]]>
+    </writeOuputXML>
+
+    <!--     Export the workflow related to the mail because there is no subscription. -->
+    <executeOperationOnQueryResult operation="exportDocument" query="SELECT d.[Id] FROM [WorkflowDefinition] d WHERE d.[IsCurrentVersion] = true AND d.[This] INSUBFOLDER '/Configuration/Workflows/DMPoc'">
+        <zipContent>true</zipContent>
+        <addFolderPath>true</addFolderPath>
+        <addIdRef>true</addIdRef>
+        <addUpdateIdRef>true</addUpdateIdRef>
+        <operation>update</operation>
+        <writer>fileWriter</writer>
+    </executeOperationOnQueryResult>
+
+    <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <transferWorkflow id="#{DMPocSendMail Workflow}" />
+            <transferWorkflow id="#{DMPocQRCodeAccess Workflow}" />
+        ]]>
+    </writeOuputXML>
+
+    <executeOperationOnQueryResult operation="exportClassSubscription" query="SELECT c.[Id] FROM [ClassSubscription] c">
+        <exportEventAction>true</exportEventAction>
+        <exportCodeModule>true</exportCodeModule>
+        <exportWorkflowDefinition>false</exportWorkflowDefinition>
+        <useWorkflowDefinitionId>false</useWorkflowDefinitionId>
+        <operation>create</operation>
+        <writer>fileWriter</writer>
+    </executeOperationOnQueryResult>
+
+    <writeOuputXML writer="fileWriter">
+        <![CDATA[
+            <storeIdReference idRef="DMPocContract Workflow CodeModule" query="SELECT c.[Id] FROM [CodeModule] c WHERE c.[DocumentTitle] = 'DMPocContract Workflow CodeModule' AND c.[IsCurrentVersion] = true" />
+         ]]>
+    </writeOuputXML>
+
+    <executeOperationOnQueryResult operation="exportDocument" query="SELECT c.[Id] FROM [CodeModule] c WHERE c.[DocumentTitle] = 'DMPocContract Workflow CodeModule' AND c.[IsCurrentVersion] = true">
+        <zipContent>true</zipContent>
+        <addFolderPath>true</addFolderPath>
+        <addIdRef>true</addIdRef>
+        <addUpdateIdRef>true</addUpdateIdRef>
+        <operation>update</operation>
+        <writer>fileWriter</writer>
+    </executeOperationOnQueryResult>
+
+</operations>
